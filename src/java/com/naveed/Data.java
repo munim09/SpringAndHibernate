@@ -67,43 +67,4 @@ public class Data {
         }
     }
     
-    public void viewMember2(){
-        String sql="select * from members";
-        //session=helper.getSessionFactory().openSession();
-        SessionFactory sessionFactory=HibernateUtil.getSessionFactory();
-        session=sessionFactory.getCurrentSession();
-        Transaction tx = null;
-        try{
-            tx=session.beginTransaction();
-            
-             SQLQuery query=session.createSQLQuery(sql);
-            //query.setResultTransformer(Criteria.ALIAS_TO_ENTITY_MAP);
-            query.addEntity(Members.class);
-            List list=query.list();
-
-//            for(Object ob: list){
-//                Map row=(Map)ob;
-//                System.out.println("id: "+row.get("id"));
-//                System.out.println("name: "+row.get("name"));
-//            }
-            
-             for (Iterator iterator = list.iterator(); iterator.hasNext();){
-                Members members = (Members) iterator.next(); 
-                System.out.print("id: " + members.getId()); 
-                System.out.print("Name: " + members.getName()); 
-             }
-             
-            tx.commit();
-            
-            sessionFactory.close();
-        }catch(HibernateException e){
-            if (tx!=null) tx.rollback();
-            e.printStackTrace(); 
-        }finally{
-            if(sessionFactory!=null&&!sessionFactory.isClosed()){
-                sessionFactory.close();
-            }
-        }
-    }
-    
 }

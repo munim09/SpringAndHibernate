@@ -10,6 +10,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Hibernate Utility class with a convenient method to get Session Factory
@@ -17,6 +18,7 @@ import org.hibernate.service.ServiceRegistry;
  *
  * @author user
  */
+
 public class HibernateUtil {
 
 //    private static final SessionFactory sessionFactory;
@@ -47,11 +49,11 @@ public class HibernateUtil {
 			ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
 					.applySettings(configuration.getProperties()).build();
 			System.out.println("Hibernate serviceRegistry created");
-
-			SessionFactory sessionFactory = configuration
+ 
+			SessionFactory sessionFactory1 = configuration
 					.buildSessionFactory(serviceRegistry);
 
-			return sessionFactory;
+			return sessionFactory1;
 		} catch (Throwable ex) {
 			System.err.println("Initial SessionFactory creation failed." + ex);
 			ex.printStackTrace();
