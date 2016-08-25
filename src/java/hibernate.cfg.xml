@@ -13,7 +13,14 @@
     <property name="format_sql">true</property>
     <property name="use_sql_comments">true</property>
     
-    <mapping class="com.naveed.Members"/>
+    <property name="hibernate.hbm2ddl.auto">update</property>
+
+    <mapping class="com.hibernate.entity.Members"/>
+    <mapping class="com.hibernate.entity.Address"/>
+    <mapping class="com.hibernate.entity.UserDetails"/>
+    <mapping class="com.hibernate.entity.Vehicle"/>
+
+
     
 <!--    <mapping resource="com/naveed/Members.hbm.xml"/>-->
   </session-factory>

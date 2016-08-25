@@ -30,7 +30,7 @@ public class Hello {
           
         Data data=new Data();
         
-        //data.addMember();
+        data.addMember();
         
         map.addAttribute("data", "test data");
         return new ModelAndView("newjsp");

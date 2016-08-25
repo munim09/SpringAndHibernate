@@ -5,6 +5,7 @@
  */
 package com.naveed;
 
+import com.hibernate.entity.Members;
 import java.util.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
