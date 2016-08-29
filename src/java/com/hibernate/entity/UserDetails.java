@@ -5,11 +5,17 @@
  */
 package com.hibernate.entity;
 
+import java.util.Collection;
 import javax.annotation.Generated;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -23,6 +29,16 @@ public class UserDetails {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     private int userID;
     private String userName;
+    
+    
+//    @ManyToOne
+//    private Vehicle vehicle;
+    
+//    @OneToMany(mappedBy = "userDetails")
+//    private Collection<Vehicle> vehicle;
+    
+    @ManyToMany
+    private Collection<Vehicle> vehicle;
 
     public int getUserID() {
         return userID;
@@ -41,5 +57,23 @@ public class UserDetails {
     public void setUserName(String userName) {
         this.userName = userName;
     }
+
+    public Collection<Vehicle> getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Collection<Vehicle> vehicle) {
+        this.vehicle = vehicle;
+    }
+
+//    public Vehicle getVehicle() {
+//        return vehicle;
+//    }
+//
+//    public void setVehicle(Vehicle vehicle) {
+//        this.vehicle = vehicle;
+//    }
+
+ 
     
 }

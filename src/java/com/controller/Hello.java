@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 @Controller
 public class Hello {
-    @RequestMapping(value="/test.htm",method=RequestMethod.GET)
+    @RequestMapping(value="/test",method=RequestMethod.GET)
     public ModelAndView index(ModelMap map){
           
         Data data=new Data();
@@ -37,7 +37,7 @@ public class Hello {
         //return "main";
     }
     
-    @RequestMapping(value="/mem.htm",method=RequestMethod.GET)
+    @RequestMapping(value="/mem",method=RequestMethod.GET)
     public ModelAndView viewMember(ModelMap map){
           
         Data data=new Data();
