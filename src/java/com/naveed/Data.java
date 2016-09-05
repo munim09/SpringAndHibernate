@@ -121,4 +121,22 @@ public class Data {
         System.out.println("size of list "+users.size());
     }
     
+    public void updateUser(){
+        session=helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        
+        UserDetails userDetails=(UserDetails)session.get(UserDetails.class, 6);
+        
+        userDetails.setUserName("comm3");
+        session.update(userDetails);
+        userDetails.setUserName("comm4");
+        session.update(userDetails);
+        userDetails.setUserName("comm5");
+        session.update(userDetails);
+        
+        session.getTransaction().commit();
+        session.close();
+    }
+    
+    
 }

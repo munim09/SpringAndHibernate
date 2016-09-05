@@ -82,4 +82,13 @@ public class Hello {
        map.addAttribute("data","test data");
        return new ModelAndView("newjsp");
     }
+    
+    @RequestMapping(value = "/updateUser",method = RequestMethod.GET)
+    public ModelAndView updateUser(ModelMap map){
+        
+        Data data= new Data();
+        data.updateUser();
+        map.addAttribute("data","test data");
+        return new ModelAndView("newjsp");
+    }
 }
