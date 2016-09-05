@@ -49,4 +49,37 @@ public class Hello {
         return new ModelAndView("newjsp");
         //return "main";
     }
+    @RequestMapping(value="/addUser",method=RequestMethod.GET)
+    public ModelAndView addUserDetails(ModelMap map){
+          
+        Data data=new Data();
+        
+        //data.addMember();
+        data.addUser();
+        
+        map.addAttribute("data", "test data");
+        return new ModelAndView("newjsp");
+        //return "main";
+    }
+    
+    @RequestMapping(value="/addWheeler",method=RequestMethod.GET)
+    public ModelAndView addWheeler(ModelMap map){
+          
+        Data data=new Data();
+        
+        //data.addMember();
+        data.addWheeler();
+        
+        map.addAttribute("data", "test data");
+        return new ModelAndView("newjsp");
+        //return "main";
+    }
+    
+    @RequestMapping(value="/viewUser",method = RequestMethod.GET)
+    public ModelAndView viewUser(ModelMap map){
+        Data data=new Data();
+       data.viewUser();
+       map.addAttribute("data","test data");
+       return new ModelAndView("newjsp");
+    }
 }

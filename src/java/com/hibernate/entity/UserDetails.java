@@ -5,8 +5,10 @@
  */
 package com.hibernate.entity;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import javax.annotation.Generated;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,6 +19,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 /**
  *
@@ -37,8 +41,9 @@ public class UserDetails {
 //    @OneToMany(mappedBy = "userDetails")
 //    private Collection<Vehicle> vehicle;
     
-    @ManyToMany
-    private Collection<Vehicle> vehicle;
+    @OneToMany(cascade = CascadeType.ALL)
+    @NotFound(action = NotFoundAction.IGNORE)
+    private Collection<Vehicle> vehicle=new ArrayList<>();
 
     public int getUserID() {
         return userID;

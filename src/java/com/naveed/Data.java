@@ -5,12 +5,17 @@
  */
 package com.naveed;
 
+import com.hibernate.entity.FourWheeler;
 import com.hibernate.entity.Members;
+import com.hibernate.entity.TwoWheeler;
+import com.hibernate.entity.UserDetails;
+import com.hibernate.entity.Vehicle;
 import java.util.*;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
+import org.hibernate.Query;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -66,6 +71,54 @@ public class Data {
         }finally {
            session.close(); 
         }
+    }
+    
+    public void addUser(){
+        UserDetails userDetails =new UserDetails();
+        userDetails.setUserName("munim");
+        Vehicle vehicle1=new Vehicle();
+        vehicle1.setVehicleName("first");
+        Vehicle vehicle2=new Vehicle();
+        vehicle2.setVehicleName("seconde");
+        userDetails.getVehicle().add(vehicle1);
+        userDetails.getVehicle().add(vehicle2);
+        session=helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(userDetails);
+        session.getTransaction().commit();
+        session.close();
+    }
+    
+    public void addWheeler(){
+        
+        Vehicle vehicle1=new Vehicle();
+        vehicle1.setVehicleName("first");
+        
+        TwoWheeler twoWheeler=new TwoWheeler();
+        twoWheeler.setVehicleName("Bike");
+        twoWheeler.setSteeringHandle("Bike steering handle");
+        
+        FourWheeler fourWheeler=new FourWheeler();
+        fourWheeler.setVehicleName("Porsche");
+        fourWheeler.setSteeringWheel("Porsche steering wheel");
+        
+        session=helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(vehicle1);
+        session.save(twoWheeler);
+        session.save(fourWheeler);
+        session.getTransaction().commit();
+        session.close();
+    }
+    
+    public void viewUser(){
+        session=helper.getSessionFactory().openSession();
+        session.beginTransaction();
+        Query query=session.createQuery("from UserDetails where userid >= 5");
+        List users=query.list();
+        session.getTransaction().commit();
+        session.close();
+        System.out.println("size of list "+users.size());
     }
     
 }

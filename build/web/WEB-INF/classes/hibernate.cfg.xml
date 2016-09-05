@@ -19,6 +19,9 @@
     
     <mapping class="com.hibernate.entity.UserDetails"/>
     <mapping class="com.hibernate.entity.Vehicle"/>
+    <mapping class="com.hibernate.entity.TwoWheeler"/>
+    <mapping class="com.hibernate.entity.FourWheeler"/>
+
 
 
     

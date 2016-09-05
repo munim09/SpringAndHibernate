@@ -38,6 +38,7 @@ public class HibernateUtil {
 //    public static SessionFactory getSessionFactory() {
 //        return sessionFactory;
 //    }
+    
     private static SessionFactory sessionFactory;
     private static SessionFactory buildSessionFactory() {
 		try {

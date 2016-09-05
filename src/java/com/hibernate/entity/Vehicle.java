@@ -7,22 +7,35 @@ package com.hibernate.entity;
 
 import java.util.Collection;
 import javax.persistence.CascadeType;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.DiscriminatorType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
- *
+ * 
  * @author user
+ * 
+ * //@DiscriminatorColumn(
+//        name="vehicle_type",
+//        discriminatorType = DiscriminatorType.STRING
+//)
+* @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
  */
 @Entity
-@Table(name="vehicle")
+//@Table(name="vehicle")
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Vehicle {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private int vehicleId;
     private String vehicleName;
     
