@@ -114,11 +114,28 @@ public class Data {
     public void viewUser(){
         session=helper.getSessionFactory().openSession();
         session.beginTransaction();
-        Query query=session.createQuery("from UserDetails where userid >= 5");
-        List users=query.list();
+        
+        String minUserId="5"; 
+        //////// HQL
+        
+        Query query=session.createQuery("from UserDetails where userID > ?");
+        //Query query=session.createQuery("select userName from UserDetails");
+        
+//        query.setFirstResult(4);
+//        query.setMaxResults(4);
+        query.setInteger(0, Integer.parseInt(minUserId));
+        
+        List<UserDetails> users=(List<UserDetails>)query.list();
+        //List<String> users=(List<String>)query.list();
         session.getTransaction().commit();
         session.close();
-        System.out.println("size of list "+users.size());
+        //System.out.println("size of list "+users.size());
+        for(int i=0;i<users.size();i++){
+            System.out.println("id: "+users.get(i).getUserID());
+            System.out.println("name: "+users.get(i).getUserName());
+             
+ //           System.out.println("username: "+users.get(i));
+        }
     }
     
     public void updateUser(){
